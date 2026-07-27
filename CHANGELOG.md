@@ -2,6 +2,14 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v1.0.1 — 2026-07-27
+
+Lint tooling: `modernize` → built-in `go fix`.
+
+- `make lint` / `make lint-fix` now use Go 1.26's built-in `go fix` (`-diff`
+  check in `lint`, apply in `lint-fix`) instead of the `modernize` analyzer, and
+  the `modernize` tool directive is dropped from `go.mod`. No library code changed.
+
 ## v1.0.0 — 2026-07-27
 
 First tagged release — a full modernization of the original pre-modules package.

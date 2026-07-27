@@ -9,12 +9,17 @@ dep: ## Get project dependencies
 
 lint: ## Lint all Golang files
 	@echo "Linting all Go files..."
-	@go tool modernize -test ./...
+	@out=$$(go fix -diff ./... 2>&1); \
+	if [ -n "$$out" ]; then \
+		echo "$$out"; \
+		echo "go fix found issues. Run 'make lint-fix' to apply."; \
+		exit 1; \
+	fi
 	@go tool golangci-lint run --timeout=30m0s ./...
 
 lint-fix: ## Lint all Golang files and fix
 	@echo "Linting all Go files..."
-	@go tool modernize -fix -test ./...
+	@go fix ./...
 	@go tool golangci-lint run --fix --timeout=30m0s ./...
 
 test: ## Run all tests
