@@ -1,2 +1,7 @@
 .idea
+.vscode
 go-spamcheck
+coverage.*
+coverage-percent.txt
+CLAUDE.md
+git-update.sh
