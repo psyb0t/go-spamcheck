@@ -5,6 +5,7 @@
 [![coverage](https://raw.githubusercontent.com/psyb0t/go-spamcheck/badges/coverage.svg)](https://github.com/psyb0t/go-spamcheck/actions/workflows/pipeline.yml)
 [![version](https://raw.githubusercontent.com/psyb0t/go-spamcheck/badges/version.svg)](https://github.com/psyb0t/go-spamcheck/tags)
 [![license](https://raw.githubusercontent.com/psyb0t/go-spamcheck/badges/license.svg)](LICENSE)
+[![imported by](https://raw.githubusercontent.com/psyb0t/go-spamcheck/badges/importers.svg)](https://github.com/psyb0t/go-spamcheck/blob/badges/importers.md)
 
 A tiny Go client for [Postmark's SpamCheck API](https://spamcheck.postmarkapp.com/doc/). Feed it a raw email, get back a SpamAssassin score — no account, no API key, no bullshit.
 

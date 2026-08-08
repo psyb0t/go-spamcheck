@@ -1,6 +1,22 @@
 name: pipeline
 
-on: [push]
+on:
+  push:
+  # Refreshes the imported-by badge. WEEKLY, not daily: pkg.go.dev's crawl lags
+  # publication by days, so a daily run re-derives an unchanged number six extra
+  # times a week — and each drags the full test suite along, since the badges
+  # job needs the coverage artifact.
+  #
+  # The WHOLE pipeline, not a badges-only job: the badge publisher wipes its
+  # branch and republishes only what the run produced, so a badges-only refresh
+  # would delete coverage/version/license.
+  #
+  # Slot derived from a hash of the repo name — GitHub cron has no randomness,
+  # and the scheduler sheds queued runs hardest at the round numbers a human
+  # would pick.
+  schedule:
+    - cron: "10 2 * * 3"
+  workflow_dispatch:
 
 jobs:
   call-go-workflow:
@@ -21,3 +37,4 @@ jobs:
     uses: psyb0t/reusable-github-workflows/.github/workflows/create-badges.yml@master
     with:
       coverage: true
+      importers: true
